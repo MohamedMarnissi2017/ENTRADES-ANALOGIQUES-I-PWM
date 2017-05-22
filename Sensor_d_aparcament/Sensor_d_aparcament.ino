@@ -37,11 +37,11 @@ void loop()
                                    // temps que tarda a recórrer aquesta distància, retornant-la distància
                                    // en centímetres, a punt per utilitzar en casos de mesurament per ultrasons.
                                     
-   while (sonar < 60)             //mentres la distaci sigui menor a 60 cm
+   if (sonar < 2000  && sonar >10)             //mentres la distaci sigui menor a 60 cm
    {   
        noTone(8);                  //mantenim so apagat
        
-       delay(sonar*10);            //Delay depenent del valor del sonar. Si la distància es redueix
+       delay(sonar*5);            //Delay depenent del valor del sonar. Si la distància es redueix
                                    // el delay és menor i el senyal acústica sonés amb més freqüència.
                                    // Si la distància augmenta, el delay augmenta, disminuint la freqüència
                                    // amb la qual sonen els xiulets.
@@ -51,15 +51,11 @@ void loop()
        delay(100);                 //Delay per mantenir la senyal acustica 0,1 segons minim
        
        noTone(8);                  //parem el so
-    
-       while (sonar < 10)          //Si la distancia del sonar es menor de 10 cm
+   }
+       if (sonar <= 10)          //Si la distancia del sonar es menor de 10 cm
        {
          tone(8, sonido);                //sona sense interrupcions
-         sonar = ultrasonic.Ranging(CM); //Distancia del sonar  
        }  
-       
-       sonar = ultrasonic.Ranging(CM); //Llegim la distanci del sonar per tornar a començar
-   }
   
 }
 
